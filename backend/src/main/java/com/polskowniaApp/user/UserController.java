@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +27,8 @@ class UserController
     @PostMapping("/authenticate")
     ResponseEntity<?> authenticateUser(@RequestBody UserDTO user)
     {
+//        wyniesienie logiki do serwisu?
+
         var userDetails = this.authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
 
         if (!userDetails.isAuthenticated())

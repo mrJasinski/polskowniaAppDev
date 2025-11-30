@@ -31,5 +31,18 @@ class ShopInitializer implements ApplicationListener<ContextRefreshedEvent>
                     , 0
                     , Level.A1
             ));
+
+        var title2 = "kurs egzaminacyjny państwowy B2";
+        if (!this.shopItemRepo.existsByTitle(title2))
+            this.shopItemRepo.save(new ShopItem(
+                    title2
+                    , 1599.99
+                    , "Przewodnik po grach słownych"
+                    , "Przewodnik wprowadzający w arkana powszechncyh w języku polskim gier słownych"
+                    , Category.EBOOK
+                    , 0
+                    , 0
+                    , Level.A1
+            ));
     }
 }

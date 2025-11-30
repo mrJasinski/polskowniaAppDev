@@ -6,6 +6,7 @@ public enum Category
 {
     COURSE_INDIVIDUAL("Kurs indywidualny", "CI")
     , COURSE_GROUP("Kurs grupowy", "CG")
+    , COURSE_EXAM("Kurs egzaminacyjny", "CE")
     , EXAM_SIMULATION("Symulacja egzaminu", "ES")
     , BOOK("Książka", "BK")
     , EBOOK("Ebook", "EB")
