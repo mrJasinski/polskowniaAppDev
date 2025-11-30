@@ -38,4 +38,15 @@ class UserController
 
         return ResponseEntity.ok(logged);
     }
+
+//    register
+    @PostMapping("/register")
+    ResponseEntity<?> registerUser(@RequestBody UserDTO toSave)
+    {
+        return ResponseEntity.ok(this.userService.createUser(toSave));
+    }
+
+//    restore password
+
+//    change password
 }
