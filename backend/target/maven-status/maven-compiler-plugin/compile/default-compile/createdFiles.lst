@@ -18,11 +18,13 @@ com\polskowniaApp\shop\ShopService.class
 com\polskowniaApp\security\filter\CsrfCookieFilter.class
 com\polskowniaApp\shop\ShopItem.class
 com\polskowniaApp\user\UserRole.class
+com\polskowniaApp\utils\exception\PasswordRequirementsNotMetException.class
 com\polskowniaApp\shop\dto\ShopDTO.class
 com\polskowniaApp\utils\Category.class
 com\polskowniaApp\user\SqlUserRepository.class
 com\polskowniaApp\shop\ShopRepository.class
 com\polskowniaApp\utils\Level.class
+com\polskowniaApp\utils\exception\UserAlreadyExistsException.class
 com\polskowniaApp\user\UserInitializer.class
 com\polskowniaApp\shop\SqlShopItemRepository.class
 com\polskowniaApp\security\config\AppPasswordEncoder.class

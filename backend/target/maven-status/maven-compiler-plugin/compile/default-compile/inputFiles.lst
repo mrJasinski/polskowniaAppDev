@@ -12,6 +12,7 @@ D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\user\UserServi
 D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\shop\dto\ShopDTO.java
 D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\shop\ShopItem.java
 D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\security\config\AuthManager.java
+D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\utils\exception\UserAlreadyExistsException.java
 D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\user\UserInitializer.java
 D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\user\dto\UserLoggedDTO.java
 D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\user\UserRole.java
@@ -19,6 +20,7 @@ D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\shop\ShopItemR
 D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\shop\ShopService.java
 D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\shop\SqlShopItemRepository.java
 D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\user\SqlUserRepository.java
+D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\utils\exception\PasswordRequirementsNotMetException.java
 D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\security\filter\CsrfCookieFilter.java
 D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\shop\ShopController.java
 D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\user\dto\UserDTO.java

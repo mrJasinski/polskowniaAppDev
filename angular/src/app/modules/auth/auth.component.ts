@@ -40,34 +40,34 @@ export class AuthComponent implements OnInit
 
     onSubmit()
     {
-    if (!this.authForm.valid)
-    {
-        return;
-    }
-
-    const email = this.authForm.value.email; 
-    const password = this.authForm.value.password;
-
-    if (this.isLoginMode)
-    {
-        this.authService.signIn(email, password) .subscribe(resData => 
+        if (!this.authForm.valid)
         {
-            this.router.navigate([AppConstants.DASHBOARD_URL]);
-        }); 
-    }
+            return;
+        }
 
-    if (!this.isLoginMode)
-    {
-        const name = this.authForm.value.name;
+        const email = this.authForm.value.email; 
+        const password = this.authForm.value.password;
 
-
-        this.authService.signUp(email, password, name).subscribe(resData => 
+        if (this.isLoginMode)
         {
-            this.router.navigate([AppConstants.DASHBOARD_URL]);
-        });
-    }
+            this.authService.signIn(email, password) .subscribe(resData => 
+            {
+                this.router.navigate([AppConstants.DASHBOARD_URL]);
+            }); 
+        }
 
-    this.authForm.reset();
+        if (!this.isLoginMode)
+        {
+            const name = this.authForm.value.name;
+
+
+            this.authService.signUp(email, password, name).subscribe(resData => 
+            {
+                this.router.navigate([AppConstants.DASHBOARD_URL]);
+            });
+        }
+
+        this.authForm.reset();
     }
 
     onForgottenPassword()

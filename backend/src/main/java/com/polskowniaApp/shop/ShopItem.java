@@ -6,6 +6,9 @@ import com.polskowniaApp.utils.Level;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "shop_items")
@@ -19,8 +22,7 @@ public class ShopItem
     private double price;
     private String descriptionShort;
     private String descriptionFull;
-    @Enumerated(EnumType.STRING)
-    private Category category;
+    private String categories;          // TODO czy razczej zbiór? żeby był np kurs egzaminacyjny, kurs indywidualny
     private int lessonsAmount;         //lessons amount
     private int lessonDuration;       //lesson duration (eg 45 min )
     @Enumerated(EnumType.STRING)
@@ -32,14 +34,14 @@ public class ShopItem
     {
     }
 
-    ShopItem(final String title, final double price, final String descriptionShort, final String descriptionFull, final Category category, final int lessonsAmount, final int lessonDuration, final Level level)
+    ShopItem(final String title, final double price, final String descriptionShort, final String descriptionFull, final Set<Category> categories, final int lessonsAmount, final int lessonDuration, final Level level)
     {
         this.refNumber = generateRefNumber(category.getAcronym(), level.name());
         this.title = title;
         this.price = price;
         this.descriptionShort = descriptionShort;
         this.descriptionFull = descriptionFull;
-        this.category = category;
+        this.categories = categories;
         this.lessonsAmount = lessonsAmount;
         this.lessonDuration = lessonDuration;
         this.level = level;
@@ -52,6 +54,36 @@ public class ShopItem
 
         return acronym + "_" + level + "_" + timestamp;
     }
+
+    String wrapCategories(final Set<Category> categories)
+    {
+        var result = new StringBuilder();
+
+        for (Category category : categories)
+            result.append(", ").append(category);
+
+        return result.toString();
+    }
+
+    Set<Category> unwrapCategories(final String categories)
+    {
+        var categoriesSplit = categories.split(", ");
+
+
+
+        return new HashSet<Category>(Arrays.asList(categoriesSplit));
+    }
+//
+//        Set<String> unwrapCcMails(String ccMails)
+//        {
+//            var mailsSplit = ccMails.split(" ");
+//
+//            var mails = new String[mailsSplit.length];
+//
+//            System.arraycopy(mailsSplit, 0, mails, 0, mailsSplit.length);
+//
+//            return Set.of(mails);
+//        }
 
     //    ShortReadModel is used on main shop page and has only some item details eg short description etc
     ShopItemShortReadModel toShortReadModel()

@@ -30,4 +30,6 @@ class ShopService
                .map(ShopItem::toShortReadModel)
                .toList();
     }
+
+//    WAŻNE idempotency
 }
