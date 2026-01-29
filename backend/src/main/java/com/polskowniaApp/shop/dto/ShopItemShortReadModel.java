@@ -1,11 +1,14 @@
 package com.polskowniaApp.shop.dto;
 
+import java.util.List;
+import java.util.Set;
+
 public class ShopItemShortReadModel
 {
     private String title;
     private double price;
     private String descriptionShort;
-    private String category;
+    private List<String> categories;
     private int lessonsAmount;         //lessons amount
     private int lessonDuration;       //lesson duration (eg 45 min )
     private String level;
@@ -14,12 +17,19 @@ public class ShopItemShortReadModel
     {
     }
 
-    public ShopItemShortReadModel(final String title, final double price, final String descriptionShort, final String category, final int lessonsAmount, final int lessonDuration, final String level)
+    public ShopItemShortReadModel(
+            final String title
+            , final double price
+            , final String descriptionShort
+            , final List<String> categories
+            , final int lessonsAmount
+            , final int lessonDuration
+            , final String level)
     {
         this.title = title;
         this.price = price;
         this.descriptionShort = descriptionShort;
-        this.category = category;
+        this.categories = categories;
         this.lessonsAmount = lessonsAmount;
         this.lessonDuration = lessonDuration;
         this.level = level;
@@ -40,9 +50,9 @@ public class ShopItemShortReadModel
         return this.descriptionShort;
     }
 
-    public String getCategory()
+    public List<String> getCategories()
     {
-        return this.category;
+        return this.categories;
     }
 
     public int getLessonsAmount()

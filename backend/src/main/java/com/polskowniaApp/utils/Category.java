@@ -7,9 +7,12 @@ public enum Category
     COURSE_INDIVIDUAL("Kurs indywidualny", "CI")
     , COURSE_GROUP("Kurs grupowy", "CG")
     , COURSE_EXAM("Kurs egzaminacyjny", "CE")
+    , COURSE_VIDEO("Kurs wideo", "CV")
+    , COURSE_AUDIO("Kurs audio", "CA")
     , EXAM_SIMULATION("Symulacja egzaminu", "ES")
     , BOOK("Książka", "BK")
     , EBOOK("Ebook", "EB")
+    , AUDIOBOOK("Audiobook", "AB")
     , EXERCISE_SHEET("Arkusz ćwiczeń", "EX");
 
     private final String name;
