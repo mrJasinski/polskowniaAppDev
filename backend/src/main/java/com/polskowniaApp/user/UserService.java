@@ -47,6 +47,10 @@ public class UserService
 
     User createUser(final UserDTO toSave)
     {
+//        zmiana userDTO na userRegisterDTO żeby dodać np sprawdzenie czy hasła są jednakowe
+
+
+
 //        check czy email jest wolny
         if (this.userRepo.existsByEmail(toSave.getEmail()))
             throw new UserAlreadyExistsException("Użytkownik o podanym adresie e-mail już istnieje!");

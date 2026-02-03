@@ -79,4 +79,6 @@ class MailService
         sendSimpleMessage(email, subject, text);
 
     }
+
+//    TODO newsletter
 }

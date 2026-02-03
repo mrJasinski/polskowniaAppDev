@@ -72,6 +72,7 @@ class SecurityConfig
                                 "/register", "/authenticate"
                                 , "/shop"
                                 , "/sendMail"
+                                , "/articles**"
                         ).permitAll()
                         .requestMatchers(
                         "/dashboard"
