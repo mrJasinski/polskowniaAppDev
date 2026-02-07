@@ -23,6 +23,7 @@ com\polskowniaApp\shop\dto\ShopDTO.class
 com\polskowniaApp\utils\Category.class
 com\polskowniaApp\user\SqlUserRepository.class
 com\polskowniaApp\shop\ShopRepository.class
+com\polskowniaApp\article\ArticleInitializer.class
 com\polskowniaApp\utils\Level.class
 com\polskowniaApp\utils\exception\UserAlreadyExistsException.class
 com\polskowniaApp\user\UserInitializer.class
