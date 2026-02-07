@@ -6,5 +6,6 @@ export const  AppConstants =
     , REGISTER_API_URL : "/register"
     , DASHBOARD_URL : "/dashboard"
     , SHOP_URL : "/shop"
+    , ARTICLES_URL : "/articles"
 
 }

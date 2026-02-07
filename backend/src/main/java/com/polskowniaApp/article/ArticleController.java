@@ -20,7 +20,7 @@ class ArticleController
     ResponseEntity<?> getArticles(@RequestParam(defaultValue = "0") int page)
     {
 //        TODO wyciąganie listy artykułów + paginacja
-        return ResponseEntity.ok(this.articleService.getAllArticlesByPage(page));
+        return ResponseEntity.ok(this.articleService.getAllArticlesByPageAsShortReadModel(page));
     }
 
     @GetMapping("/articles/{title}")

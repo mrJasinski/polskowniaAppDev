@@ -6,7 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -27,18 +26,17 @@ class ArticleService
 
         return this.articleRepo.findAll(pageWithArticles);
     }
-//TODO konwersja na później
-//    Page<ArticleShortReadModel> getAllArticlesByPageAsShortReadModel(final int page)
-//    {
-//        return getAllArticlesByPage(page)
-//                .stream()
-//                .map(Article::toShortReadModel)
-//                .toList();
-//    }
+
+    Page<ArticleShortReadModel> getAllArticlesByPageAsShortReadModel(final int page)
+    {
+        return getAllArticlesByPage(page)
+                .map(Article::toShortReadModel);
+
+    }
 
     Article getArticleByTitleLink(final String title)
     {
-        return this.articleRepo.findByLink(title)
+        return this.articleRepo.findByArticleLink(title)
                 .orElseThrow(() -> new NoSuchElementException("Article with given link title not found!"));
     }
 

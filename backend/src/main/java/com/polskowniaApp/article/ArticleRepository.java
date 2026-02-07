@@ -9,7 +9,11 @@ import java.util.Optional;
 
 interface ArticleRepository
 {
-    Page<Article> findAll(Pageable pageable);
+    Page<Article> findAll(final Pageable pageable);
 
-    Optional<Article> findByLink(final String title);
+    Article save(final Article toSave);
+
+    Optional<Article> findByArticleLink(final String title);
+
+    boolean existsByArticleLink(final  String link);
 }

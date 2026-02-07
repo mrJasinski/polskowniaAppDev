@@ -55,7 +55,7 @@ class ArticleUnitTest
     }
 
     @Test
-    void covertTitleToLink_shouldReturnStringLowerCaseOnly()
+    void covertTitleToLink_shouldReturnStringLowerCaseCharsOnly()
     {
 //        given
         var title = "Żółty żółw źółcią";
@@ -68,6 +68,22 @@ class ArticleUnitTest
 
 //        then
         assertFalse(result.contains("\\p{Lu}"));
+    }
+
+    @Test
+    void covertTitleToLink_shouldReturnStringWithoutAccents()
+    {
+//        given
+        var title = "Żółty żółw źółcią";
+
+//        system under test
+        var toTest = new Article();
+
+//        when
+        var result = toTest.covertTitleToLink(title);
+
+//        then
+        assertTrue(result.matches("\\A\\p{ASCII}*\\z"));
     }
 
 }

@@ -27,7 +27,7 @@ public enum Category
     public static Category getByName(String name)
     {
         for(Category c : values())
-            if (c.getName().equals(name))
+            if (c.getName().equalsIgnoreCase(name))
                 return c;
 
         throw new NoSuchElementException("Category with given name not found!");

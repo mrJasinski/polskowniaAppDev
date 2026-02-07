@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+</head>
+<body style="margin: auto; width: 80%;">
+    <h1>Artykuły/Blog</h1>
+
+    <div>
+        <tr *ngFor = "let article of articles">
+            <td>
+               <img attr.src = "data:image/png;base64 , {{article.logo}}" alt = "{{article.title}}" style = "width: 128px; height: 128px; border: 1px solid black;">
+            </td>
+            <td>
+                <p>Data publikacji: {{article.publishDate}}</p>
+                <p>Cykl: {{article.cycle}}</p>
+                <p>Autor {{article.author}}</p>
+                <h3>{{article.title}}</h3>
+                <p>{{article.summary}}</p>
+                <button>Czytaj dalej</button>
+            </td>
+        </tr>
+    </div>
+
+</body>
+</html>
