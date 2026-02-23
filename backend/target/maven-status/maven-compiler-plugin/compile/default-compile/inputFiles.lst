@@ -34,6 +34,7 @@ D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\user\SqlUserRe
 D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\utils\exception\PasswordRequirementsNotMetException.java
 D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\security\filter\CsrfCookieFilter.java
 D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\article\dto\ArticleDTO.java
+D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\article\dto\ArticleWriteModel.java
 D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\shop\ShopController.java
 D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\user\dto\UserDTO.java
 D:\projekty\polskowniaApp\backend\src\main\java\com\polskowniaApp\article\dto\ArticleShortReadModel.java

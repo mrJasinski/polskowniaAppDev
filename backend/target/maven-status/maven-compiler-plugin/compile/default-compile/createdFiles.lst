@@ -1,3 +1,4 @@
+com\polskowniaApp\article\dto\ArticleWriteModel.class
 com\polskowniaApp\security\config\AuthManager.class
 com\polskowniaApp\security\config\SecurityConfig.class
 com\polskowniaApp\shop\dto\ShopItemShortReadModel.class
