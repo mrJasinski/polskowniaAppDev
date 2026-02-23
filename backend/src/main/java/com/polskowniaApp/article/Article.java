@@ -20,7 +20,7 @@ class Article
     private LocalDateTime publishDate;
     private String author;
     private String summary;
-    private String fileReference;
+    private String articleText;
     private String logoReference;
 
     Article()
@@ -33,7 +33,7 @@ class Article
             , final LocalDateTime publishDate
             , final String author
             , final String summary
-            , final String fileReference
+            , final String articleText
             , final String logoReference)
     {
         this.title = title;
@@ -42,7 +42,7 @@ class Article
         this.publishDate = publishDate;
         this.author = author;
         this.summary = summary;
-        this.fileReference = fileReference;
+        this.articleText = articleText;
         this.logoReference = logoReference;
     }
 
@@ -87,9 +87,9 @@ class Article
         return this.summary;
     }
 
-    public String getFileReference()
+    public String getArticleText()
     {
-        return fileReference;
+        return articleText;
     }
 
     public String getLogoReference()
@@ -121,6 +121,7 @@ class Article
             this.publishDate
             , this.articleCycle
             , this.title
+            , this.articleLink
             , this.author
             , this.summary
         );
@@ -129,7 +130,12 @@ class Article
     ArticleReadModel toReadModel()
     {
         return new ArticleReadModel(
-//                TODO
+                this.title
+                , this.articleLink
+                , this.publishDate
+                , this.articleCycle
+                , this.author
+                , this.articleText
         );
     }
 }

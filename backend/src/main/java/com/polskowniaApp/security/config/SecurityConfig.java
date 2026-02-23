@@ -62,6 +62,7 @@ class SecurityConfig
                                 , "/shop", "/getShopItemCategories", "/addShopItem/**", "/shopItem/**", "/getDiscountCodes"
                                 , "/sendMail", "/students", "/generateDiscountCode", "/getDiscount"
                                 ,"/restorePassword", "/changePassword", "/downloadFile/**", "/fileManager", "/uploadFile**", "/getFiles"
+                                , "/articles/**"
                                 )
 //                        , "/addShopItem/**", "/getShopItem/**")
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
@@ -72,7 +73,7 @@ class SecurityConfig
                                 "/register", "/authenticate"
                                 , "/shop"
                                 , "/sendMail"
-                                , "/articles**"
+                                , "/articles/**"
                         ).permitAll()
                         .requestMatchers(
                         "/dashboard"

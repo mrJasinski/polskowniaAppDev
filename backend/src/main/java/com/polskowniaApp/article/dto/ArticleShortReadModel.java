@@ -6,6 +6,7 @@ public class ArticleShortReadModel
 {
     private LocalDateTime publishDate;
     private String title;
+    private String link;
     private String cycle;    //cykl artykułów lepsza nazwa?
     private String author;
     private String summary;
@@ -15,11 +16,12 @@ public class ArticleShortReadModel
     {
     }
 
-    public ArticleShortReadModel(final LocalDateTime publishDate, final String cycle, final String title, final String author, final String summary)
+    public ArticleShortReadModel(final LocalDateTime publishDate, final String cycle, final String title, final String link, final String author, final String summary)
     {
         this.publishDate = publishDate;
         this.cycle = cycle;
         this.title = title;
+        this.link = link;
         this.author = author;
         this.summary = summary;
     }
@@ -32,6 +34,11 @@ public class ArticleShortReadModel
     public String getTitle()
     {
         return this.title;
+    }
+
+    public String getLink()
+    {
+        return this.link;
     }
 
     public String getCycle()

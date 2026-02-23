@@ -1,12 +1,11 @@
 package com.polskowniaApp.article;
 
+import com.polskowniaApp.article.dto.ArticleWriteModel;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/articles")
 class ArticleController
 {
     private final ArticleService articleService;
@@ -16,19 +15,22 @@ class ArticleController
         this.articleService = articleService;
     }
 
-    @GetMapping("/articles")
+    @GetMapping()
     ResponseEntity<?> getArticles(@RequestParam(defaultValue = "0") int page)
     {
-//        TODO wyciąganie listy artykułów + paginacja
-        return ResponseEntity.ok(this.articleService.getAllArticlesByPageAsShortReadModel(page));
+//        TODO wyciąganie listy opublikowanych artykułów + paginacja
+        return ResponseEntity.ok(this.articleService.getAllPublishedArticlesByPageAsShortReadModel(page));
     }
 
-    @GetMapping("/articles/{title}")
+    @GetMapping("/{title}")
     ResponseEntity<?> getArticleByTitle(@PathVariable String title)
     {
-//TODO przejście do konkretnego artykułu
-//        odnośnikiem jest tytuł bez polskich znaków a słowa połączone myślnikami
-
         return ResponseEntity.ok(this.articleService.getArticleByTitleLinkAsReadModel(title));
+    }
+
+    @PostMapping("/add")
+    ResponseEntity<?> addArticle(@RequestBody ArticleWriteModel toSave)
+    {
+        return ResponseEntity.ok(this.articleService.saveArticle(toSave));
     }
 }

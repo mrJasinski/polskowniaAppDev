@@ -19,7 +19,8 @@
                 <p>Autor {{article.author}}</p>
                 <h3>{{article.title}}</h3>
                 <p>{{article.summary}}</p>
-                <button>Czytaj dalej</button>
+                <p>Tagi: x, y, z - linki?</p>
+                <button (click) = "onGoToArticle(article.link)">Czytaj dalej...</button>
             </td>
         </tr>
     </div>

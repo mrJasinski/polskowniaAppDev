@@ -1,6 +1,7 @@
 package com.polskowniaApp.article.dto;
 
-public class ArticleReadModel
-{
+import java.time.LocalDateTime;
 
+public record ArticleReadModel(String title, String link, LocalDateTime publishDate, String cycle, String author, String text)
+{
 }

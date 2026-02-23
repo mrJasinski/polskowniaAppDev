@@ -5,6 +5,7 @@ import { ShopComponent } from './modules/shop/shop.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { CartComponent } from './modules/shop/cart/cart.component';
 import { ArticlesComponent } from './modules/article/articles/articles.component';
+import { ArticleComponent } from './modules/article/article.component';
 
 export const routes: Routes = 
 [
@@ -15,5 +16,6 @@ export const routes: Routes =
     , { path : 'cart', component : CartComponent}
     , { path : 'aboutMe', component : CartComponent}
     , { path : 'articles', component : ArticlesComponent}
+    , { path : 'articles/:articleLink', component : ArticleComponent}
     , { path : 'contact', component : CartComponent}
 ];
