@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Set;
 
 @Component
@@ -28,7 +29,7 @@ class ShopInitializer implements ApplicationListener<ContextRefreshedEvent>
                     , 159.99
                     , "Przewodnik po grach słownych"
                     , "Przewodnik wprowadzający w arkana powszechncyh w języku polskim gier słownych"
-                    , Set.of(Category.EBOOK)
+                    , List.of(Category.EBOOK)
                     , 0
                     , 0
                     , Level.A1
@@ -41,7 +42,7 @@ class ShopInitializer implements ApplicationListener<ContextRefreshedEvent>
                     , 1599.99
                     , "Przewodnik po grach słownych"
                     , "Przewodnik wprowadzający w arkana powszechncyh w języku polskim gier słownych"
-                    , Set.of(Category.EBOOK)
+                    , List.of(Category.EBOOK)
                     , 0
                     , 0
                     , Level.B2

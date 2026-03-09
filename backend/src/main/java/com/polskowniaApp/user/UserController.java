@@ -48,8 +48,6 @@ class UserController
         return ResponseEntity.ok(this.userService.createUser(toSave));
     }
 
-//    restore password
-
 //    change password
 
     @GetMapping("/dashboard")
@@ -60,4 +58,7 @@ class UserController
 
         return ResponseEntity.ok("User dashboard!");
     }
+
+//    restore password
+//    check czy konto istnieje
 }

@@ -1,0 +1,5 @@
+com\polskowniaApp\utils\CategoryUnitTest.class
+com\polskowniaApp\article\ArticleUnitTest.class
+com\polskowniaApp\shop\ShopItemRepositoryIntegrationTest.class
+com\polskowniaApp\shop\ShopItemRepositoryUnitTest.class
+com\polskowniaApp\shop\ShopItemTest.class

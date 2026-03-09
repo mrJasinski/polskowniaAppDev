@@ -17,6 +17,14 @@ class ShopController
     @GetMapping("/shop")
     ResponseEntity<?> getShop()
     {
+//        pozycje na sklepie paginacja?
         return ResponseEntity.ok(this.shopService.getShopAsDto());
     }
+
+//    @GetMapping("/shop")
+//    ResponseEntity<?> getShop()
+//    {
+////        pozycje na sklepie paginacja?
+//        return ResponseEntity.ok(this.shopService.getShopItems());
+//    }
 }

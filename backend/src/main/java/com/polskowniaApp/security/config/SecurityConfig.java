@@ -19,6 +19,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
 import java.util.Collections;
+import java.util.List;
 
 @EnableWebSecurity
 @Configuration
@@ -46,7 +47,7 @@ class SecurityConfig
                     {
                         var config = new CorsConfiguration();
 
-                        config.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
+                        config.setAllowedOrigins(List.of("http://localhost:4200", "http://192.168.1.40:4200"));
                         config.setAllowedMethods(Collections.singletonList("*"));
                         config.setAllowCredentials(true);
                         config.setAllowedHeaders(Collections.singletonList("*"));
@@ -59,7 +60,7 @@ class SecurityConfig
                 .csrf(csrf -> csrf.csrfTokenRequestHandler(requestHandler).ignoringRequestMatchers(
                                 "/register", "/authenticate", "/dashboard"
                                 , "/createCourse", "/myCourses/**", "/allCourses"
-                                , "/shop", "/getShopItemCategories", "/addShopItem/**", "/shopItem/**", "/getDiscountCodes"
+                                , "/shop/**", "/getShopItemCategories", "/addShopItem/**", "/shopItem/**", "/getDiscountCodes"
                                 , "/sendMail", "/students", "/generateDiscountCode", "/getDiscount"
                                 ,"/restorePassword", "/changePassword", "/downloadFile/**", "/fileManager", "/uploadFile**", "/getFiles"
                                 , "/articles/**"
@@ -71,7 +72,7 @@ class SecurityConfig
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers(
                                 "/register", "/authenticate"
-                                , "/shop"
+                                , "/shop/**"
                                 , "/sendMail"
                                 , "/articles/**"
                         ).permitAll()

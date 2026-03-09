@@ -7,8 +7,10 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "shop_items")
@@ -40,7 +42,7 @@ public class ShopItem
             , final double price
             , final String descriptionShort
             , final String descriptionFull
-            , final Set<Category> categories
+            , final List<Category> categories
             , final int lessonsAmount
             , final int lessonDuration
             , final Level level)
@@ -64,7 +66,7 @@ public class ShopItem
         return level + "_" + acronym + "_" + timestamp;
     }
 
-    String getCategoriesAcronyms(Set<Category> categories)
+    String getCategoriesAcronyms(List<Category> categories)
     {
 //        convert each category acronym into one string
 //        to be used in shop item reference number
@@ -87,28 +89,59 @@ public class ShopItem
                 .toList();
     }
 
-    String wrapCategories(final Set<Category> categories)
+    String wrapCategories(final List<Category> categories)
     {
-        var result = new StringBuilder();
+//        if null
+//        var result = new StringBuilder(categories.get(0).getName());
+//
+////        czy to się nie będzie wywalać przy zapisie listy z jedną pozycją?
+//        for (int i = 1 ; i < categories.size() ; i++ )
+//            result.append(", ").append(categories.get(i).getName());
+//
+////        przepisać na do-while to co wyżej?
+//
+//        System.out.println();
+//        System.out.println("wrapper " + result);
+//
+//        return result.toString();
 
-        for (Category c : categories)
-            result.append(", ").append(c.getName());
-
-        return result.toString();
+        return categories.stream()
+                .filter(c -> c != null)
+                .map(Category::getName)
+                .filter(name -> name != null && !name.isBlank())
+                .collect(Collectors.joining(", "));
     }
 
-    List<Category> unwrapCategories(final String categories)
+    List<Category> unwrapCategories(String categories)
     {
-        var categoriesSplit = categories.split(", ");
-        var result = new ArrayList<Category>();
+        System.out.println();
+        System.out.println("shop item");
+        System.out.println(categories);
 
-        for (String c : categoriesSplit)
-        {
-            var cat = Category.getByName(c);
-            result.add(cat);
-        }
+//        TODO prowizorka niemniej z błędem trzeba się uporać
+//        skąd się bierze ", " na początku?
 
-        return result;
+//        categories = categories.replaceFirst(", ", "");
+//
+//        var categoriesSplit = categories.split(", ");
+//        var result = new ArrayList<Category>();
+//
+//        for (String c : categoriesSplit)
+//        {
+//            var cat = Category.getByName(c);
+//            result.add(cat);
+//        }
+//
+//        return result;
+
+        if (categories == null || categories.isBlank())
+            return List.of();
+
+        return Arrays.stream(categories.split(","))
+                .map(String::trim)
+                .filter(s -> !s.isBlank())
+                .map(Category::getByName)
+                .toList();
     }
 
     List<String> unwrapCategoriesNames(final String categories)
@@ -130,5 +163,65 @@ public class ShopItem
                 , this.lessonDuration
                 , this.level.name()
         );
+    }
+
+    public int getId()
+    {
+        return this.id;
+    }
+
+    public String getRefNumber()
+    {
+        return this.refNumber;
+    }
+
+    public String getTitle()
+    {
+        return this.title;
+    }
+
+    public double getPrice()
+    {
+        return this.price;
+    }
+
+    public String getDescriptionShort()
+    {
+        return this.descriptionShort;
+    }
+
+    public String getDescriptionFull()
+    {
+        return this.descriptionFull;
+    }
+
+    public int getLessonsAmount()
+    {
+        return this.lessonsAmount;
+    }
+
+    public int getLessonDuration()
+    {
+        return this.lessonDuration;
+    }
+
+    public Level getLevel()
+    {
+        return this.level;
+    }
+
+    public String getFileReference()
+    {
+        return this.fileReference;
+    }
+
+    public String getLogoReference()
+    {
+        return this.logoReference;
+    }
+
+    public String getCategories()
+    {
+        return this.categories;
     }
 }

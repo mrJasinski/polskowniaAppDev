@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: polskownia-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/polskowniaTest
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: OneSevenOneOne
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    depends_on:
+      - db
+    networks:
+      - polskownia-net
+
+  frontend:
+    build: ./angular
+    container_name: polskownia-frontend
+    ports:
+      - "4200:80"
+    networks:
+      - polskownia-net
+
+  db:
+    image: postgres:15
+    container_name: polskownia-db
+    environment:
+      POSTGRES_DB: polskowniaTest
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: OneSevenOneOne
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - polskownia-net
+
+  pgadmin:
+    image: dpage/pgadmin4:8
+    container_name: polskownia-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@example.com
+      PGADMIN_DEFAULT_PASSWORD: passwd
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    networks:
+      - polskownia-net
+
+networks:
+  polskownia-net:
+    driver: bridge
+
+volumes:
+  postgres_data:

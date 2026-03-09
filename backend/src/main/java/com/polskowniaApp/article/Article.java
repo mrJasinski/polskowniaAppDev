@@ -46,7 +46,15 @@ class Article
         this.logoReference = logoReference;
     }
 
-    Article(final String title, final String articleLink, final String articleCycle, final LocalDateTime publishDate, final String author, final String summary, final String fileReference, final String logoReference)
+    Article(
+            final String title
+            , final String articleLink
+            , final String articleCycle
+            , final LocalDateTime publishDate
+            , final String author
+            , final String summary
+            , final String fileReference
+            , final String logoReference)
     {
         this(title, articleCycle, publishDate, author, summary, fileReference, logoReference);
         this.articleLink = articleLink;

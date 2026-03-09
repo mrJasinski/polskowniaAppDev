@@ -1,6 +1,6 @@
-export const  AppConstants = 
+export const  AppConstants =
 {
-    APP_URL : "http://localhost:8080"
+    APP_URL : "http://192.168.1.40:8080"
     , HOME_URL : "/"
     , AUTH_API_URL : "/authenticate"
     , REGISTER_API_URL : "/register"
