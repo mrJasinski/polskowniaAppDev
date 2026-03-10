@@ -28,9 +28,6 @@ public enum Category
     {
 //        zabezpieczenie null
 
-        System.out.println();
-        System.out.println("category " + name);
-
         for(Category c : values())
             if (c.getName().equalsIgnoreCase(name))
                 return c;

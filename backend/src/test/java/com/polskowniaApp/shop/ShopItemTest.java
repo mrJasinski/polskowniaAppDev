@@ -2,10 +2,10 @@ package com.polskowniaApp.shop;
 
 import com.polskowniaApp.utils.Category;
 import org.junit.jupiter.api.Test;
+import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,7 +24,7 @@ class ShopItemTest
 
 //    tests of tests ;)
     @Test
-    void wrapCategories_shouldReturnString()
+    void wrapCategories_shouldReturnStringMadeOfCategoryNames()
     {
 //        given
         var categories = List.of(Category.values());
@@ -38,6 +38,8 @@ class ShopItemTest
 //        then
         System.out.println("xxxxx");
         System.out.println(result);
+
+//        TODO jakie testy można tu dać?
 
 
     }
@@ -61,21 +63,20 @@ class ShopItemTest
 
     }
 
-//    List<Category> unwrapCategories(final String categories)
-//    {
-//        var categoriesSplit = categories.split(", ");
-//        var result = new ArrayList<Category>();
-//
-//        for (String c : categoriesSplit)
-//        {
-//            var cat = Category.getByName(c);
-//            result.add(cat);
-//        }
-//
-//        return result;
-//    }
-
 //    test pod kątem pustego i nulla oraz błędne dane wejściowe np ", Ebook"
+
+
+//    List<Category> unwrapCategories(String categories)
+//    {
+//        if (categories == null || categories.isBlank())
+//            return List.of();
+//
+//        return Arrays.stream(categories.split(","))
+//                .map(String::trim)
+//                .filter(s -> !s.isBlank())
+//                .map(Category::getByName)
+//                .toList();
+//    }
 
     @Test
     void unwrapCategories_shouldConvertStringIntoListOfCategories()
@@ -91,7 +92,71 @@ class ShopItemTest
 
 //        then
         assertInstanceOf(List.class, result);
-        System.out.println("result " + result);
+    }
+
+    @Test
+    void unwrapCategories_shouldReturnEmptyListWhenCategoriesStringIsNull()
+    {
+//        given
+        String categories = null;
+
+//        system under test
+        var toTest = new ShopItem();
+
+//        when
+        var result = toTest.unwrapCategories(categories);
+
+//        then
+        assertTrue(result.isEmpty());
+    }
+
+    @Test
+    void unwrapCategories_shouldReturnEmptyListWhenCategoriesStringIsBlank()
+    {
+//        given
+        var categories = "";
+
+//        system under test
+        var toTest = new ShopItem();
+
+//        when
+        var result = toTest.unwrapCategories(categories);
+
+//        then
+        assertTrue(result.isEmpty());
+    }
+
+    @Test
+    void unwrapCategories_shouldReturnEmptyListWhenCategoriesStringIsWhitespace()
+    {
+//        given
+        var categories = " ";
+
+//        system under test
+        var toTest = new ShopItem();
+
+//        when
+        var result = toTest.unwrapCategories(categories);
+
+//        then
+        assertTrue(result.isEmpty());
+    }
+
+    @Test
+    void unwrapCategories_shouldReturnListWithSizeOfNumberOfDelimitersPlusOne()
+    {
+//        given
+        var categories = Category.EBOOK + ShopItem.DELIMITER + " " + Category.AUDIOBOOK;
+        var delimitersCount = StringUtils.countOccurrencesOf(categories, ShopItem.DELIMITER);
+
+//        system under test
+        var toTest = new ShopItem();
+
+//        when
+        var result = toTest.unwrapCategories(categories);
+
+//        then
+        assertEquals(delimitersCount + 1, result.size());
     }
 
 //    List<String> getCategoriesNames(List<Category> categories)

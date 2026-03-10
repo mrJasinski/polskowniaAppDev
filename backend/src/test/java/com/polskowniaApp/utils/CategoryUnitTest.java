@@ -2,6 +2,10 @@ package com.polskowniaApp.utils;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.NoSuchElementException;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CategoryUnitTest
@@ -16,15 +20,30 @@ class CategoryUnitTest
 //    }
 
     @Test
-    void getByName_shouldReturnEnumWhenFound()
+    void getByName_shouldReturnEnumWhenNameFound()
     {
 //        given
-        var cat = "EBOOK";
+        var name = "EBOOK";
 
 //        when
-        var result = Category.getByName(cat);
+        var result = Category.getByName(name);
 
 //        then
         assertEquals(Category.EBOOK, result);
+    }
+
+    @Test
+    void getByName_shouldThrowErrorWhenNameNotFound()
+    {
+//        given
+        var name = "xxx";
+
+//        when
+        var result = catchThrowable(() -> Category.getByName(name));
+
+//        then
+        assertThat(result)
+                .isInstanceOf(NoSuchElementException.class)
+                .hasMessageContaining("Category with given name not found!");
     }
 }

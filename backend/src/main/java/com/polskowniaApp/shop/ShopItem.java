@@ -6,10 +6,7 @@ import com.polskowniaApp.utils.Level;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Entity
@@ -32,6 +29,8 @@ public class ShopItem
     private String fileReference;
     private String logoReference;
     private String categories;
+
+    static final String DELIMITER = ",";
 
     ShopItem()
     {
@@ -91,53 +90,19 @@ public class ShopItem
 
     String wrapCategories(final List<Category> categories)
     {
-//        if null
-//        var result = new StringBuilder(categories.get(0).getName());
-//
-////        czy to się nie będzie wywalać przy zapisie listy z jedną pozycją?
-//        for (int i = 1 ; i < categories.size() ; i++ )
-//            result.append(", ").append(categories.get(i).getName());
-//
-////        przepisać na do-while to co wyżej?
-//
-//        System.out.println();
-//        System.out.println("wrapper " + result);
-//
-//        return result.toString();
-
         return categories.stream()
-                .filter(c -> c != null)
+                .filter(Objects::nonNull)
                 .map(Category::getName)
                 .filter(name -> name != null && !name.isBlank())
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(DELIMITER));
     }
 
     List<Category> unwrapCategories(String categories)
     {
-        System.out.println();
-        System.out.println("shop item");
-        System.out.println(categories);
-
-//        TODO prowizorka niemniej z błędem trzeba się uporać
-//        skąd się bierze ", " na początku?
-
-//        categories = categories.replaceFirst(", ", "");
-//
-//        var categoriesSplit = categories.split(", ");
-//        var result = new ArrayList<Category>();
-//
-//        for (String c : categoriesSplit)
-//        {
-//            var cat = Category.getByName(c);
-//            result.add(cat);
-//        }
-//
-//        return result;
-
         if (categories == null || categories.isBlank())
             return List.of();
 
-        return Arrays.stream(categories.split(","))
+        return Arrays.stream(categories.split(DELIMITER))
                 .map(String::trim)
                 .filter(s -> !s.isBlank())
                 .map(Category::getByName)
@@ -146,7 +111,7 @@ public class ShopItem
 
     List<String> unwrapCategoriesNames(final String categories)
     {
-        var categoriesSplit = categories.split(", ");
+        var categoriesSplit = categories.split(DELIMITER);
 
         return List.of(categoriesSplit);
     }
